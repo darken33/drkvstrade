@@ -1,0 +1,22 @@
+{
+    "launch_path": "/applications/client/drkvstrade",
+    "installs_allowed_from": [
+        "*"
+    ],
+    "version": "1.0.2",
+    "name": "VS Trade Simulator",
+    "description": "A Trade Simulator for the game VegaStrike.",
+    "developer": {
+        "name": "Philippe Bousquet",
+        "url": "http://darken33.net/wp/index.php/2015/08/12/vs-trade-simulator-a-trade-simulator-for-the-game-vegastrike/"
+    },
+    "orientation": ["portrait"],
+    "permissions": {
+        "systemXHR": { "description" : "Required to query database on the internet" }
+    },
+    "icons": {
+        "60": "/applications/client/drkvstrade/icon/icon-60.png",
+        "128": "/applications/client/drkvstrade/icon/icon-128.png",
+        "512": "/applications/client/drkvstrade/icon/icon-512.png"
+    }
+}

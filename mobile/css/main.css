@@ -1,0 +1,138 @@
+body {
+	margin:0; 
+	padding:0; 
+	text-align: left; 
+	background: #000000; /*383838;*/ 
+	color: #000000;
+	font-weight: bold;
+	font-size: 100%;
+	text-shadow: 1px 1px #000000;
+	font-family: Arial, sans-serif;
+}
+.ui-mobile, .ui-mobile .ui-page {
+    min-height: 0;
+	font-weight: bold;
+	font-size: 100%;
+	text-shadow: 1px 1px #000000;
+}
+#loading {
+	background: #000000; 
+	color: #FFFFFF; 
+	position: fixed; 
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	background-image:url('../images/ajax-loader.gif');
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+}
+.ui-overlay-a {
+	background-image:url('../images/bg.png');
+}
+.ui-overlay-b {
+	background-image:url('../images/bg.png');
+}
+.ui-overlay-c {
+	background-image:url('../images/bg.png');
+}
+.ui-overlay-d {
+	background-image:url('../images/bg.png');
+}
+.ui-overlay-e {
+	background-image:url('../images/bg.png');
+}
+.ui-overlay-f {
+	background-image:url('../images/bg.png');
+}
+.opacity10 {
+	opacity: 0.1;
+}
+#titre {
+	background: none; 
+	background-image:url('../images/title_without_bg.png');
+	background-position: 50% 0%;
+	background-repeat: no-repeat;
+}
+#trade, #pdons, #config, #result, #aide {
+	background: none; 
+} 
+.help-text {
+	font-weight: normal; 
+	font-size: 10pt; 
+	text-shadow: none; 
+	text-align: justify; 
+	padding: 0.5em;
+}
+
+
+/* CSS mode DESKTOP */
+@media only screen and (min-width: 1024px) {
+	#titre, #trade, #menuj, #score, #hsc_today, #hsc_internet, #list_games {
+		background-size: 1024px 1824px;
+	}
+	#brake {
+		height: 128px; 
+		background-size: 128px 128px;
+		background-position: 50% 50%;
+		background-repeat:no-repeat;
+	}
+	#horn {
+		height: 128px; 
+		background-size: 128px 128px;
+		background-position: 80%;
+		background-repeat:no-repeat;
+	}
+	#plane {
+		height: 128px; 
+		background-size: 128px 128px;
+		background-position: 20%;
+		background-repeat:no-repeat;
+	}
+}
+@media only screen and (max-width: 1023px) {
+	#titre {
+		background-size: 800px 1425px;
+	}
+
+}
+@media only screen and (max-width: 799px) {
+	#titre {
+		background-size: 720px 1282px;
+	}
+}
+@media only screen and (max-width: 719px) {
+	#titre {
+		background-size: 640px 1140px;
+	}
+}
+@media only screen and (max-width: 639px) {
+	#titre {
+		background-size: 600px 1069px;
+	}
+}
+@media only screen and (max-width: 599px) {
+	#titre {
+		background-size: 512px 912px;
+	}
+}
+@media only screen and (max-width: 511px) {
+	#titre {
+		background-size: 480px 855px;
+	}
+}
+@media only screen and (max-width: 479px) {
+	#titre {
+		background-size: 400px 712px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#titre {
+		background-size: 320px 570px;
+	}
+}
+@media only screen and (max-width: 319px) {
+	#titre {
+		background-size: 240px 428px;
+	}
+}

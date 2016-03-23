@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>VS Trade Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/VSTradeSimulator.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/async_storage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/game.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		
+		<!-- 
+			page de Chargement
+		-->
+		<div data-role="page" id="loading" data-theme="c">
+			<div data-role="content">&nbsp;</div>	
+		</div>
+
+
+		<!--
+			page de Titre
+		-->
+		<div data-role="page" id="titre" data-theme="a">
+			<div style="position: fixed; bottom: 15%; width: 100%;">
+			<div id="menu" style="width: 85%; margin-left: auto; margin-right: auto;">
+				<div class="help-text" id="error" style="text-align: center; margin-bottom: 5%;">
+					No internet connection.
+				</div> 
+				<a href="#" id="m_txt_trade" data-role="button" data-theme="e" data-icon="shop" data-inline="false" class="ui-disabled">Best Trade</a>
+				<a href="#" id="m_txt_search" data-role="button" data-theme="e" data-icon="search" data-inline="false" class="ui-disabled">Search</a>
+				<a href="#" id="m_txt_aide" data-role="button" data-theme="d" data-icon="info" data-inline="false">About</a>
+				<a href="#" id="m_txt_dons" data-role="button" data-theme="d" data-icon="heart" data-inline="false">Help me</a>
+				<a href="#" id="m_txt_quitter" data-role="button" data-theme="a" data-icon="power" data-inline="false">Quit</a>
+			</div>	
+			</div> 
+		</div>
+
+		<!--
+			page de Trade
+		-->
+		<div data-role="page" id="trade" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="trade_back" data-role="button" data-theme="a" data-icon="carat-l" data-iconpos="notext" data-inline="true">Back</a>
+				<h1>Best Trade</h1>
+			</div>
+			<div style="width: 85%; margin-left: auto; margin-right: auto; margin-top:0.5em">
+				<!-- configuration -->
+				<div class="ui-field-contain" style="display: none">
+					<label for="config" id="l_config">Configuration : none</label>
+					<a href="#" id="m_txt_search" data-role="button" data-theme="d" data-icon="gear" data-inline="false">Manage</a>
+				</div>
+				<!-- system population -->
+				<div class="ui-field-contain">
+					<label for="planets" id="l_planets">Planets</label>
+					<select id="planets" name="planets" multiple="multiple" data-native-menu="false" tabindex="-1">
+						<option value="j_class__planets">Aera_Ice</option>
+						<option value="n_class__planets">Aera_Trantor</option>
+						<option value="desert__planets">Arid</option>
+						<option value="frigid_mud__planets">Arid_Methane</option>
+						<option value="m_class__planets">Bio_Diverse</option>
+						<option value="red_rocky__planets">Bio_Diverse_Methane</option>
+						<option value="k_class__planets">Bio_Simple</option>
+						<option value="toxic_disaster__planets">Bio_Simple_Methane</option>
+						<option value="earth__planets">Earth</option>
+					</select><br/>
+					<label for="installations" id="l_installations">Installations</label>
+					<select id="installations" name="installations" multiple="multiple" data-native-menu="false" tabindex="-1">
+						<option value="Outpost">Outpost</option>
+						<option value="Refinery">Refinery</option>
+						<option value="Refinery__aera">Refinery (aera)</option>
+						<option value="Refinery__pirates">Refinery (pirates)</option>
+						<option value="Refinery__rlaan">Refinery (rlaan)</option>
+						<option value="Refinery__uln">Refinery (uln)</option>
+						<option value="Relay">Relay</option>
+					</select><br/>
+					<label for="vessels" id="l_vessels">Vessels</label>
+					<select id="vessels" name="vessels" multiple="multiple" data-native-menu="false" tabindex="-1">
+						<option value="Charillus">Charillus</option>
+						<option value="Cultivator">Cultivator</option>
+						<option value="Diligence">Diligence</option>
+						<option value="Dodo">Dodo</option>
+						<option value="Emu">Emu</option>
+						<option value="Hawking">Hawking</option>
+					</select><br/>
+				</div> 
+				<div class="ui-field-contain">
+					<fieldset data-role="controlgroup" data-type="vertical">
+						<label><input id="risky" name="risky" data-theme="a" type="checkbox"><span id="l_risky">Show risky transactions</span></label>
+					</fieldset>
+				</div> 
+				<!-- search best trade -->
+				<a href="#" id="b_trade_search" data-role="button" data-theme="e" data-icon="search" data-inline="false">Search</a>
+			</div>	
+		</div>
+
+		<!--
+			page de Config
+		-->
+		<div data-role="page" id="config" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="param_back" data-role="button" data-theme="a" data-icon="carat-l" data-iconpos="notext" data-inline="true">Back</a>
+				<h1 id="txt_param">Configurations</h1>
+			</div>
+			<div id="content" style="background-image:url('../images/bg.png'); width: 85%; margin-left: auto; margin-right: auto; margin-top:0.5em">
+				<!-- configuration -->
+				<div class="ui-field-contain">
+					<label for="config" id="l_config">Name</label>
+					<input name="game_name" id="game_name" data-theme="a" placeholder="Sector/System" value="" maxlength="15" type="text">
+					<div style="text-align: center">
+						<a href="#" id="m_txt_search" data-role="button" data-theme="d" data-icon="carat-d" data-inline="false">Save</a>
+					</div>
+				</div>
+				<!-- system population -->
+				<div class="ui-field-contain">
+					<fieldset data-role="controlgroup" data-type="vertical">
+						<legend id="l_game_options">Saved configurations</legend>
+						<label><input id="game_help" name="game_help" data-theme="a" type="radio"><span id="l_game_help">Crucible/Cephid-17</span></label>
+						<label><input id="game_sound" name="game_sound" data-theme="a" type="radio"><span id="l_game_sound">Vega/Adad</span></label>
+						<label><input id="game_score" name="game_score" data-theme="a" type="radio"><span id="l_game_score">Vega/Nammu</span></label>
+					</fieldset>
+					<div style="text-align: center">
+						<a href="#" id="m_txt_search" data-role="button" data-theme="d" data-icon="carat-u" data-inline="true">Load</a>
+						<a href="#" id="m_txt_search" data-role="button" data-theme="d" data-icon="delete" data-inline="true">Delete</a>
+					</div>
+				</div> 
+			</div>	
+		</div>
+
+		<!--
+			page de Result
+		-->
+		<div data-role="page" id="result" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="result_back" data-role="button" data-theme="a" data-icon="carat-l" data-iconpos="notext" data-inline="true">Back</a>
+				<h1>Best Trade</h1>
+			</div>
+			<div id="content" style="width: 85%; margin-left: auto; margin-right: auto; margin-top:0.5em">
+				<div id="rs">
+				<div id="resultset" data-role="collapsible-set">
+					<div data-role="collapsible" data-collapsed="false" data-theme="b">
+						<h3>From Arid</h3>
+						<ul data-role="listview">
+							<li data-role="list-divider" data-theme="b">To Bio_Diverse</li>
+							<li class="risky" data-theme="c">
+								<strong>Natural_Products/Liquor</strong>
+								<p>
+									You should gain about 30%<br/>
+									Available stock : 1000<br/>
+									<strong style="color:#FF0000">This transaction is risky</strong>
+								</p>
+							</li>
+							<li data-theme="c">
+								<strong>Natural_Products/Liquor</strong>
+								<p>
+									You should gain about 30%<br/>
+									Available stock : 1000<br/>
+								</p>
+							</li>
+							<li data-role="list-divider" data-theme="b">To Relay</li>
+							<li data-theme="c">
+								<strong>Natural_Products/Liquor</strong>
+								<p>
+									You should gain about 30%<br/>
+									Available stock : 1000<br/>
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>From Bio_Diverse</h3>
+						<ul data-role="listview">
+							<li data-role="list-divider" data-theme="b">To Relay</li>
+							<li data-theme="c">
+								<strong>Natural_Products/Liquor</strong>
+								<p>
+									You should gain about 30%<br/>
+									Available stock : 1000<br/>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div> 
+				</div>
+			</div>	
+		</div>
+
+
+		<!--
+			page de dons
+		-->	
+		<div data-role="page" data-theme="a" id="pdons">
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="dons_back" data-role="button" data-theme="a" data-icon="carat-l" data-iconpos="notext" data-inline="true">Back</a>
+				<h1 id="dons_title">Help me</h1>
+			</div>
+			<div data-role="content" style="margin-top: 0.5em; text-align: justify;">
+				<div class="help-text" id="dons_content">
+					<p>
+					This application is designed to run on a majority of machines (tablets or smartphones). 
+					My website shows the machines on which the game has been validated. 
+					If you test this application on a machine not listed, I would appreciate if you leave me 
+					a message telling me on which machine you tested the application.<br/>
+					In case the game does not work properly, you can also leave me a message telling me your machine 
+					and screen resolution so that I improve the application.<br/>
+					</p>
+					<div style="text-align:center;">
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="get" target="_blank">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="KP98G8LZF77K2">
+							<input type="image" src="images/en/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate">
+						</form>
+					</div>
+					<p>
+					Do not hesitate to make a donation. This would allow me to finance my work to offer you other 
+					free games and applications.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<!--
+			page d'aide
+		-->	
+		<div data-role="page" data-theme="a" id="aide" style="overflow-y: visible">
+			<div data-role="header" data-position="fixed">
+				<a href="#" id="help_back" data-role="button" data-icon="carat-l" data-iconpos="notext" data-inline="true">Back</a>
+				<h1 id="help_title">About</h1>
+			</div>
+			<div data-role="content" style="margin-top: 0.5em; text-align: justify;">
+				<div class="help-text"id="help_content">
+					<p>
+						<strong>VS Trade Simulator v1.0.2</strong> is an application witch tries du calculate the best 
+						trade you can do beetwen many locations such as Planets, Installations or Vessel in the game 
+						<a href="http://vegastrike.sourceforge.net/" target="new">VegaStrike</a>.
+					</p>
+					<p>
+						This application is developed and maintained by Philippe Bousquet &lt;darken33@free.fr&gt; 
+						since August 2015 and is distributed under the terms of the 
+						<a href="http://www.gnu.org/licenses/gpl.html" target="new">
+							GNU General Public License v3
+						</a>.
+					</p>
+					<p>
+						For more information and follow the news of this application please visit 
+						<a href="http://darken33.net/wp/index.php/2015/08/12/vs-trade-simulator-a-trade-simulator-for-the-game-vegastrike/" target="new">
+							the VS Trade Simulator web page
+						</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
