@@ -3,7 +3,7 @@
     "installs_allowed_from": [
         "*"
     ],
-    "version": "1.0",
+    "version": "1.0.1",
     "name": "VS Trade Simulator",
     "description": "A Trade Simulator for the game VegaStrike.",
     "developer": {
