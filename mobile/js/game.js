@@ -8,8 +8,8 @@
 var game_version  = "1.0";
 var key = "c9743834fdea177548a64b6028a2a69f";
 var internet_ok = false;
-var serviceGetNameListUrl = "http://darken33.free.fr/applications/services/drkvstrade/vstrade_getNamesList.php";
-var serviceGetBestTradeUrl = "http://darken33.free.fr/applications/services/drkvstrade/vstrade_getBestTrade.php";
+var serviceGetNameListUrl = "http://darken33.net/applications/services/drkvstrade/vstrade_getNamesList.php";
+var serviceGetBestTradeUrl = "http://darken33.net/applications/services/drkvstrade/vstrade_getBestTrade.php";
 var initialised = false;
 
 /** Affichage de la page de chargement */ 

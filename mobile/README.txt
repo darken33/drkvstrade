@@ -3,7 +3,7 @@ VS Trade Simulator
 
 Introduction
 -----------
-VS Trade Simulator v1.0.1 is an application witch tries du calculate 
+VS Trade Simulator v1.0.2 is an application witch tries du calculate 
 the best trade you can do beetwen many locations such as Planets, 
 Installations or Vessel in the game VegaStrike : 
 * http://vegastrike.sourceforge.net/
@@ -28,6 +28,9 @@ freedoms :
 
 Changelog
 ---------
+v1.0.2 : 
+  - WebServices moved to darken33.net
+
 v1.0.1 : 
   - Some fixes on "Help Me" & "About" page
   - Add a link to th Vegastrike Home Page
@@ -39,4 +42,4 @@ News & Download
 ---------------   
 For more information and follow the news of this application please 
 visit the VS Trade Simulator web page : 
-* http://darken33.free.fr/wordpress/?p=1395.
+* http://darken33.net/wp/index.php/2015/08/12/vs-trade-simulator-a-trade-simulator-for-the-game-vegastrike/
